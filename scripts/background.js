@@ -14,13 +14,17 @@
         mock: '../api-mocks/'
     };
 
-    function showNotification(avatar, title, text) {
+    function showNotification(url, avatar, title, text) {
         var notification = Notification.createNotification(avatar, title, text);
         notification.show();
 
+        notification.onClick = function() {
+            chrome.tabs.create({ url: url });
+        };
+
         setTimeout(function() {
-            notification.close
-        }, 5000);
+            notification.cancel();
+        }, 3500);
     }
 
     Twitch.Channel = function() {
@@ -46,6 +50,7 @@
 
         if (this.isOnline) {
             this.name = stream.channel.display_name;
+            this.channelName = stream.channel.name;
             this.logo = stream.channel.logo;
             this.game = stream.channel.game;
             this.url = stream.channel.url;
@@ -85,8 +90,8 @@
                     channel = this.channels[channelName] || new Twitch.Channel;
 
                     channel.fetch(channelName).done(function(updatedChannelData, oldChannelData) {
-                        if (!this.channels[channelName]) {
-                            this.channels[channelName] = channel;
+                        if (!this.channels[updatedChannelData.channelName]) {
+                            this.channels[updatedChannelData.channelName] = updatedChannelData;
                         } else {
                             this.checkForUpdates(updatedChannelData, oldChannelData);
                         }
@@ -97,6 +102,7 @@
             checkForUpdates: function(updatedChannelData, oldChannelData) {
                 if (updatedChannelData.isOnline && updatedChannelData.isOnline !== oldChannelData.isOnline) {
                     showNotification(
+                        updatedChannelData.url,
                         updatedChannelData.logo, 
                         updatedChannelData.name + ' is streaming',
                         updatedChannelData.status
@@ -141,5 +147,9 @@
     };
 
     Twitch.Extension().start();
+
+    window.clearChannels = function() {
+        Storage.set({ channels: [] });
+    };
 
 })(jQuery, window, document)

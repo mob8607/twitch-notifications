@@ -1,8 +1,12 @@
 (function(window) {
-    var initInterval = setInterval(function() {
-        if (!!document.querySelector('.channel-actions')) {
+    var buttonExist = false;
+
+    setInterval(function() {
+        if (!!document.querySelector('.channel-actions') && !buttonExist) {
             init();
-            clearInterval(initInterval);
+            buttonExist = true;
+        } else if (!document.querySelector('.channel-actions')) {
+            buttonExist = false;
         }
     }, 500);
 
