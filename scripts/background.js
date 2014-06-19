@@ -6,7 +6,7 @@
     var Storage = chrome.storage.local;
 
     const CONFIG = {
-        updateInterval: 5000
+        updateInterval: 30000
     };
 
     const API = Twitch.API = {
@@ -18,9 +18,9 @@
         var notification = Notification.createNotification(avatar, title, text);
         notification.show();
 
-        notification.onClick = function() {
+        notification.addEventListener('click', function() {
             chrome.tabs.create({ url: url });
-        };
+        }, false);
 
         setTimeout(function() {
             notification.cancel();
@@ -90,8 +90,8 @@
                     channel = this.channels[channelName] || new Twitch.Channel;
 
                     channel.fetch(channelName).done(function(updatedChannelData, oldChannelData) {
-                        if (!this.channels[updatedChannelData.channelName]) {
-                            this.channels[updatedChannelData.channelName] = updatedChannelData;
+                        if (!this.channels[channelName]) {
+                            this.channels[channelName] = updatedChannelData;
                         } else {
                             this.checkForUpdates(updatedChannelData, oldChannelData);
                         }
