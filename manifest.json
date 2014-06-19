@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Twitch Extension",
+  "version": "0.1.0",
+  "description": "Get instantly notified when your favourite streamer is online.",
+  "icons": { 
+    "16": "images/twitch_logo_16.png",
+    "48": "images/twitch_logo_48.png",
+    "128": "images/twitch_logo_128.png" 
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.twitch.tv/*"],
+      "js": ["scripts/content-script.js"]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "notifications",
+    "https://api.twitch.tv/*"
+  ]
+}

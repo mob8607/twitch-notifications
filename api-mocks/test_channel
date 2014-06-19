@@ -1,0 +1,53 @@
+{
+   "_links":{
+      "self":"https://api.twitch.tv/kraken/streams/riotgames",
+      "channel":"https://api.twitch.tv/kraken/channels/riotgames"
+   },
+   "stream":{
+      "_id":9717979456,
+      "game":"League of Legends",
+      "viewers":44818,
+      "preview":{
+         "small":"http://static-cdn.jtvnw.net/previews-ttv/live_user_riotgames-80x50.jpg",
+         "medium":"http://static-cdn.jtvnw.net/previews-ttv/live_user_riotgames-320x200.jpg",
+         "large":"http://static-cdn.jtvnw.net/previews-ttv/live_user_riotgames-640x400.jpg",
+         "template":"http://static-cdn.jtvnw.net/previews-ttv/live_user_riotgames-{width}x{height}.jpg"
+      },
+      "_links":{
+         "self":"https://api.twitch.tv/kraken/streams/riotgames"
+      },
+      "channel":{
+         "mature":false,
+         "abuse_reported":null,
+         "status":"LCS 2014 EU Summer W2D1 + EUCS Summer 1 Ro8",
+         "display_name":"Riot Games",
+         "game":"League of Legends",
+         "delay":0,
+         "_id":36029255,
+         "name":"skykartoffel",
+         "created_at":"2012-09-08T06:53:10Z",
+         "updated_at":"2014-05-29T15:31:45Z",
+         "logo":"http://static-cdn.jtvnw.net/jtv_user_pictures/riotgames-profile_image-4be3ad99629ac9ba-300x300.jpeg",
+         "banner":null,
+         "video_banner":"http://static-cdn.jtvnw.net/jtv_user_pictures/riotgames-channel_offline_image-de0251b831e9d41b-640x360.png",
+         "background":null,
+         "profile_banner":null,
+         "profile_banner_background_color":null,
+         "url":"http://www.twitch.tv/riotgames",
+         "views":502947371,
+         "followers":776200,
+         "_links":{
+            "self":"https://api.twitch.tv/kraken/channels/riotgames",
+            "follows":"https://api.twitch.tv/kraken/channels/riotgames/follows",
+            "commercial":"https://api.twitch.tv/kraken/channels/riotgames/commercial",
+            "stream_key":"https://api.twitch.tv/kraken/channels/riotgames/stream_key",
+            "chat":"https://api.twitch.tv/kraken/chat/riotgames",
+            "features":"https://api.twitch.tv/kraken/channels/riotgames/features",
+            "subscriptions":"https://api.twitch.tv/kraken/channels/riotgames/subscriptions",
+            "editors":"https://api.twitch.tv/kraken/channels/riotgames/editors",
+            "teams":"https://api.twitch.tv/kraken/channels/riotgames/teams",
+            "videos":"https://api.twitch.tv/kraken/channels/riotgames/videos"
+         }
+      }
+   }
+}
