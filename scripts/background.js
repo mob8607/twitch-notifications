@@ -4,7 +4,7 @@
     var noop = function() {};
 
     const CONFIG = {
-        updateInterval: 2000
+        updateInterval: 30000
     };
 
     const API = Twitch.API = {
