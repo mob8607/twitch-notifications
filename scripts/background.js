@@ -1,7 +1,7 @@
 (function($, window, document) {
-    var Notification = webkitNotifications;
     var Twitch = Twitch || {};
     var Storage = chrome.storage.local;
+    var noop = function() {};
 
     const CONFIG = {
         updateInterval: 30000
@@ -13,16 +13,21 @@
     };
 
     function showNotification(url, avatar, title, text) {
-        var notification = Notification.createNotification(avatar, title, text);
-        notification.show();
+        chrome.notifications.create('', {
+            type: 'basic',
+            title: title,
+            message: text,
+            iconUrl: avatar,
+            isClickable: true
+        }, function(notificationId) {
+            setTimeout(function() {
+                chrome.notifications.clear(notificationId, noop);
+            }, 5000);
+        });
 
-        notification.addEventListener('click', function() {
+        chrome.notifications.onClicked.addListener(function() {
             chrome.tabs.create({ url: url });
-        }, false);
-
-        setTimeout(function() {
-            notification.cancel();
-        }, 5000);
+        });
     }
 
     Twitch.Channel = function() {
