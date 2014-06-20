@@ -1,6 +1,4 @@
 (function($, window, document) {
-    'use strict';
-
     var Notification = webkitNotifications;
     var Twitch = Twitch || {};
     var Storage = chrome.storage.local;
@@ -24,7 +22,7 @@
 
         setTimeout(function() {
             notification.cancel();
-        }, 3500);
+        }, 5000);
     }
 
     Twitch.Channel = function() {
